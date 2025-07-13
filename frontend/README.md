@@ -1,5 +1,22 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Features
+
+This project includes the following components:
+
+- **Assistant**: Interactive assistant for user queries and help.
+- **Education**: Displays educational background and achievements.
+- **Experience**: Showcases professional experience and roles.
+- **Map2d**: Visualizes locations or data on a 2D map.
+- **Project**: Highlights personal and professional projects.
+- **Skill**: Lists technical and soft skills.
+- **ThemeContext**: Enables light/dark theme switching across the app.
+
+## Recent Updates
+
+- Added Assistant, Education, Experience, Map2d, Project, Skill components
+- Implemented ThemeContext for theme management
+
 ## Getting Started
 
 First, run the development server:
