@@ -11,22 +11,63 @@ const Earth = () => {
     const dayTexture = new THREE.TextureLoader().load("/earthDay.jpg");
     const nightTexture = new THREE.TextureLoader().load("/earthNight.jpg");
 
+
+    const shaderMaterial = new THREE.ShaderMaterial({
+        uniforms: {
+            dayTexture: { value: dayTexture },
+            nightTexture: { value: nightTexture },
+            lightDirection: { value: new THREE.Vector3(1, 0, 0).normalize() }, // placeholder
+        },
+        vertexShader: `
+      varying vec3 vNormal;
+      varying vec2 vUv;
+      void main() {
+        vNormal = normalize(normalMatrix * normal);
+        vUv = uv;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      }
+    `,
+        fragmentShader: `
+      uniform sampler2D dayTexture;
+      uniform sampler2D nightTexture;
+      uniform vec3 lightDirection;
+      varying vec3 vNormal;
+      varying vec2 vUv;
+      void main() {
+        float dotNL = dot(normalize(vNormal), normalize(lightDirection));
+        dotNL = clamp(dotNL, 0.0, 1.0);
+        vec4 dayColor = texture2D(dayTexture, vUv);
+        vec4 nightColor = texture2D(nightTexture, vUv);
+        gl_FragColor = mix(nightColor, dayColor, dotNL);
+      }
+    `,
+    });
+
     useFrame((state, delta) => {
         if (earthRef.current) {
             earthRef.current.rotation.y += delta * 0.2;
         }
-    });
+        // Update light direction for shader
+        const sunPosition = new THREE.Vector3(500, 5, 10);
+        const lightDir = new THREE.Vector3().subVectors(
+            sunPosition,
+            earthRef.current.position
+        ).normalize();
+
+        shaderMaterial.uniforms.lightDirection.value.copy(lightDir);
+    }
+    );
 
     return (
-        <mesh ref={earthRef}>
+        <mesh ref={earthRef} material={shaderMaterial}>
             <sphereGeometry args={[1.5, 64, 64]} />
-            <meshStandardMaterial
+            {/* <meshStandardMaterial
                 map={dayTexture}            // Day texture
                 emissiveMap={nightTexture}
                 emissiveIntensity={2}
                 metalness={0.8}
                 roughness={1}
-            />
+            /> */}
         </mesh>
     );
 };
@@ -67,7 +108,7 @@ const Moon = ({ position = [1, 5, 10], intensity = 2 }) => {
             />
             {/* Visual Sun */}
             <mesh position={position}>
-                <sphereGeometry args={[0.5,  64, 64]} /> {/* bigger radius */}
+                <sphereGeometry args={[0.5, 64, 64]} /> {/* bigger radius */}
                 <meshBasicMaterial map={moonMap} />
             </mesh>
         </>
