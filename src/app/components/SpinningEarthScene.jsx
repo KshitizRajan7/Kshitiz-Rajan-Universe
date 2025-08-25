@@ -1,8 +1,8 @@
 "use client";
-
+import Loader from "./Loader";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Stars } from "@react-three/drei";
-import { useRef, Suspense, forwardRef } from "react";
+import { useRef, Suspense, forwardRef, useEffect, useState } from "react";
 import * as THREE from "three";
 
 const Earth = ({ sunRef }) => {
@@ -10,7 +10,6 @@ const Earth = ({ sunRef }) => {
 
     const dayTexture = new THREE.TextureLoader().load("/earthDay.jpg");
     const nightTexture = new THREE.TextureLoader().load("/earthNight.jpg");
-
 
     const shaderMaterial = new THREE.ShaderMaterial({
         uniforms: {
@@ -130,14 +129,14 @@ const SpinningEarthScene = () => {
             <Canvas camera={{ position: [5, 2, 5], fov: 50 }} shadows>
                 <ambientLight intensity={2} />
 
-                <Suspense fallback={null}>
-                    <Earth sunRef={sunRef}/>
+                <Suspense fallback={<Loader />}>
+                    <Earth sunRef={sunRef} />
                     <Stars radius={100} depth={50} count={5000} factor={4} fade />
-                </Suspense>
 
-                <Sun position={[500, 5, 10]} intensity={2} />
-                 {/* <ForwardedSun ref={sunRef} position={[500, 5, 10]} intensity={2} /> */}
-                <Moon position={[1, 5, 10]} intensity={2} />
+                    <Sun position={[500, 5, 10]} intensity={2} />
+                    {/* <ForwardedSun ref={sunRef} position={[500, 5, 10]} intensity={2} /> */}
+                    <Moon position={[1, 5, 10]} intensity={2} />
+                </Suspense>
 
                 <OrbitControls enableZoom enableRotate enablePan />
             </Canvas>
