@@ -2,10 +2,10 @@
 
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Stars } from "@react-three/drei";
-import { useRef, Suspense } from "react";
+import { useRef, Suspense, forwardRef } from "react";
 import * as THREE from "three";
 
-const Earth = () => {
+const Earth = ({ sunRef }) => {
     const earthRef = useRef();
 
     const dayTexture = new THREE.TextureLoader().load("/earthDay.jpg");
@@ -19,13 +19,15 @@ const Earth = () => {
             lightDirection: { value: new THREE.Vector3(1, 0, 0).normalize() }, // placeholder
         },
         vertexShader: `
-      varying vec3 vNormal;
-      varying vec2 vUv;
-      void main() {
-        vNormal = normalize(normalMatrix * normal);
-        vUv = uv;
-        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-      }
+  varying vec3 vNormal;
+varying vec2 vUv;
+
+void main() {
+  vNormal = normalize(mat3(modelMatrix) * normal); // world space normal
+  vUv = uv;
+  gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+}
+
     `,
         fragmentShader: `
       uniform sampler2D dayTexture;
@@ -48,13 +50,16 @@ const Earth = () => {
             earthRef.current.rotation.y += delta * 0.2;
         }
         // Update light direction for shader
-        const sunPosition = new THREE.Vector3(500, 5, 10);
-        const lightDir = new THREE.Vector3().subVectors(
-            sunPosition,
-            earthRef.current.position
-        ).normalize();
+        // const sunPosition = new THREE.Vector3(500, 5, 10);
 
-        shaderMaterial.uniforms.lightDirection.value.copy(lightDir);
+        if (sunRef.current && earthRef.current) {
+            const lightDir = new THREE.Vector3().subVectors(
+                sunRef.current.position,
+                earthRef.current.position
+            ).normalize();
+
+            shaderMaterial.uniforms.lightDirection.value.copy(lightDir);
+        }
     }
     );
 
@@ -72,7 +77,7 @@ const Earth = () => {
     );
 };
 
-const Sun = ({ position = [500, 5, 10], intensity = 2 }) => {
+const Sun = ({ position = [500, 5, 10], intensity = 2 }, ref) => {
 
     const sunMap = new THREE.TextureLoader().load('/sun.jpg')
     return (
@@ -86,13 +91,16 @@ const Sun = ({ position = [500, 5, 10], intensity = 2 }) => {
                 shadow-mapSize-height={1024}
             />
             {/* Visual Sun */}
-            <mesh position={position}>
+            <mesh ref={ref} position={position}>
                 <sphereGeometry args={[100, 320, 320]} /> {/* bigger radius */}
                 <meshBasicMaterial map={sunMap} />
             </mesh>
         </>
     );
 };
+
+// const ForwardedSun = forwardRef(Sun);
+
 const Moon = ({ position = [1, 5, 10], intensity = 2 }) => {
 
     const moonMap = new THREE.TextureLoader().load('/moon.jpg')
@@ -116,17 +124,19 @@ const Moon = ({ position = [1, 5, 10], intensity = 2 }) => {
 };
 
 const SpinningEarthScene = () => {
+    const sunRef = useRef();
     return (
         <div className="w-screen h-screen bg-black">
             <Canvas camera={{ position: [5, 2, 5], fov: 50 }} shadows>
                 <ambientLight intensity={2} />
 
                 <Suspense fallback={null}>
-                    <Earth />
+                    <Earth sunRef={sunRef}/>
                     <Stars radius={100} depth={50} count={5000} factor={4} fade />
                 </Suspense>
 
                 <Sun position={[500, 5, 10]} intensity={2} />
+                 {/* <ForwardedSun ref={sunRef} position={[500, 5, 10]} intensity={2} /> */}
                 <Moon position={[1, 5, 10]} intensity={2} />
 
                 <OrbitControls enableZoom enableRotate enablePan />
