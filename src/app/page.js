@@ -3,6 +3,7 @@ import { useState } from "react";
 import { BsGrid } from "react-icons/bs";
 import { FaGithub, FaLinkedin, FaYoutube, FaFacebook, FaInstagram } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import SpinningEarthScene from "./components/SpinningEarthScene";
 
 export default function Home() {
   const [open, setOpen] = useState(false);
@@ -10,17 +11,16 @@ export default function Home() {
   return (
     <div className="relative w-screen h-screen overflow-hidden bg-black flex justify-center items-center">
       {/* 3D Background placeholder */}
-      <div className="text-white absolute">
-        {/* <SpinningEarthScene /> */}
-        3D Background
-      </div>
+      
+        <SpinningEarthScene />
+      
 
       {/* Top content */}
       <h1 className="text-center font-bold text-white absolute top-5 left-5 pointer-events-none text-xl md:text-2xl">
         Kshitiz Rajan Universe
       </h1>
 
-      {/* Popover panel */}
+      {/* Popover panel
       <div
         className={`
           absolute
@@ -36,14 +36,14 @@ export default function Home() {
       >
         <div className="flex gap-4">
           {/* Admin Photo */}
-          <img
+          {/* <img
             src="/path-to-admin-photo.jpg"
             alt="Admin"
             className="w-32 h-32 rounded-full border-2 border-blue-500 object-cover absolute top-1 left-50"
-          />
+          /> */}
 
           {/* Welcome Text */}
-          <div className="space-y-1 text-center max-w-xl">
+          {/* <div className="space-y-1 text-center max-w-xl">
             <p className="text-lg font-semibold">
               Whats up people, Hello everyone, नमस्ते सबै जना लाई
             </p>
@@ -51,24 +51,24 @@ export default function Home() {
             <p className="text-sm">
               I am a Full Stack Developer, Video Editor, Content Creator, Moto Vlogger. Explore my projects, videos, blogs, and everything I create to share knowledge and fun!
             </p>
-          </div>
-        </div>
+          </div> */} 
+        {/* </div> */}
 
         {/* Projects / Cards Section */}
-        <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-center items-center gap-4 w-full">
+        {/* <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-center items-center gap-4 w-full"> */}
           {/* My Projects */}
-          <div className="bg-white/20 backdrop-blur-md rounded-lg p-4 border border-blue-500 hover:scale-105 transition-transform cursor-pointer">
+          {/* <div className="bg-white/20 backdrop-blur-md rounded-lg p-4 border border-blue-500 hover:scale-105 transition-transform cursor-pointer">
             <img src="/path-to-project1.jpg" alt="Projects" className="w-full h-32 object-cover rounded-md mb-2" />
             <h3 className="text-white font-semibold">My Projects</h3>
             <p className="text-sm text-white/80">All the projects I worked on.</p>
-          </div>
+          </div> */}
 
           {/* My Skills */}
-          <div className="bg-white/20 backdrop-blur-md rounded-lg p-4 border border-blue-500 hover:scale-105 transition-transform cursor-pointer">
+          {/* <div className="bg-white/20 backdrop-blur-md rounded-lg p-4 border border-blue-500 hover:scale-105 transition-transform cursor-pointer">
             <img src="/path-to-project2.jpg" alt="skills" className="w-full h-32 object-cover rounded-md mb-2" />
             <h3 className="text-white font-semibold">My Skills</h3>
             <p className="text-sm text-white/80">This guy can work with these technologies.</p>
-          </div>
+          </div> */}
 
           {/* Blogs */}
           {/* <div className="bg-white/20 backdrop-blur-md rounded-lg p-4 border border-blue-500 hover:scale-105 transition-transform cursor-pointer">
@@ -76,10 +76,10 @@ export default function Home() {
             <h3 className="text-white font-semibold">Blogs</h3>
             <p className="text-sm text-white/80">My articles and tutorials.</p>
           </div>*/}
-        </div>
+        {/* // </div> */}
 
         {/* Social Links */}
-        <div className="mt-6 flex items-center gap-2">
+        {/* <div className="mt-6 flex items-center gap-2">
           <p className="text-white/80 text-center">You can reach out or check out what I create on:</p>
           <div className="flex gap-4 mt-2">
             <a href="https://github.com/YourUsername" target="_blank" className="bg-white/20 p-3 rounded-full hover:bg-blue-500 transition-colors">
@@ -102,10 +102,10 @@ export default function Home() {
             </a>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Menu button */}
-      <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2">
+      {/* <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2">
         <div
           className="flex items-center justify-center w-16 h-16 border-2 border-blue-500 text-blue-500 rounded-full
                      transition-all duration-300 hover:shadow-[0_0_15px_#ffffff] hover:scale-105 cursor-pointer"
@@ -113,7 +113,7 @@ export default function Home() {
         >
           <BsGrid size={24} />
         </div>
-      </div>
-    </div>
+      </div> */}
+    // </div>
   );
 }
