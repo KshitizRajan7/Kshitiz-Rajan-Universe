@@ -1,12 +1,12 @@
 'use client';
 import { useState } from "react";
-import { BsGrid } from "react-icons/bs";
-import { FaGithub, FaLinkedin, FaYoutube, FaFacebook, FaInstagram } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
+// import { BsGrid } from "react-icons/bs";
+// import { FaGithub, FaLinkedin, FaYoutube, FaFacebook, FaInstagram } from "react-icons/fa";
+// import { MdEmail } from "react-icons/md";
 import SpinningEarthScene from "./components/SpinningEarthScene";
 
 export default function Home() {
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
 
   return (
     <div className="relative w-screen h-screen overflow-hidden bg-black flex justify-center items-center">
@@ -114,6 +114,6 @@ export default function Home() {
           <BsGrid size={24} />
         </div>
       </div> */}
-    // </div>
+  </div>
   );
 }
