@@ -129,7 +129,7 @@ const Portfolio = () => {
       </div>
 
       {/* Menu button */}
-      <div className="fixed bottom-10 left-1/2 transform -translate-x-1/2 z-50">
+      <div className="fixed bottom-5 left-1/2 transform -translate-x-1/2 z-50">
         <div
           className="flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 
             border-2 border-blue-500 text-blue-500 rounded-full
