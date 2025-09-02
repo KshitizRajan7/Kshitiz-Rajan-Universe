@@ -8,7 +8,7 @@ const Portfolio = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="relative w-full h-screen flex flex-col justify-between">
+    <div className="relative w-screen h-screen flex flex-col justify-between">
       {/* Popover panel */}
       <div
         className={`flex-1 mx-5 my-5 mb-27 border-2 border-blue-500 rounded-xl 
