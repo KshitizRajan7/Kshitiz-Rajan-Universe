@@ -23,7 +23,7 @@ const Portfolio = () => {
           <img
             src="/profile.jpg"
             alt="photo"
-            className="w-24 h-24 sm:w-32 sm:h-32 rounded-full border-2 border-blue-500 object-cover"
+            className="w-24 h-24 sm:w-32 sm:h-32 rounded-full object-cover"
           />
 
           {/* Welcome Text */}
@@ -41,40 +41,50 @@ const Portfolio = () => {
 
         {/* Projects / Cards Section */}
         <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
-          {/* My Projects */}
-          <div className="bg-white/20 backdrop-blur-md rounded-lg p-4 border border-blue-500 
-            hover:scale-105 transition-transform cursor-pointer">
-            <img
-              src="/zxc.png"
-              alt="Projects"
-              className="w-full h-32 sm:h-40 object-cover rounded-md mb-2"
-            />
-            <h3 className="text-white font-semibold">My Projects</h3>
-            <p className="text-sm text-white/80">All the projects I worked on.</p>
+          {/* My Projects*/}
+          <div className="relative rounded-lg p-4  hover:scale-105 transition-transform duration-400 cursor-pointer overflow-hidden
+                bg-[url('/projects.png')] bg-cover bg-center h-64 sm:h-72  hover:shadow-[0_0_20px_rgba(59,130,246,0.7)]">
+            {/* Optional dark overlay for readability */}
+            <div className="absolute inset-0 bg-black/50" />
+            {/* Card content */}
+            <div className=" absolute bottom-0 left-0 z-10 text-white bg-black/50 w-full ">
+              <div className="px-3 pb-3">
+                <h3 className="font-semibold text-xl">My Projects</h3>
+                <p className="text-sm text-white/80">
+                  All the projects I worked on.
+                </p>
+              </div>
+            </div>
           </div>
-
           {/* My Skills */}
-          <div className="bg-white/20 backdrop-blur-md rounded-lg p-4 border border-blue-500 
-            hover:scale-105 transition-transform cursor-pointer">
-            <img
-              src="/path-to-project2.jpg"
-              alt="skills"
-              className="w-full h-32 sm:h-40 object-cover rounded-md mb-2"
-            />
-            <h3 className="text-white font-semibold">My Skills</h3>
-            <p className="text-sm text-white/80">This guy can work with these technologies.</p>
+          <div className="relative rounded-lg p-4 hover:scale-105 transition-transform duration-400 cursor-pointer overflow-hidden
+                bg-[url('/skills.png')] bg-cover bg-center h-64 sm:h-72  hover:shadow-[0_0_20px_rgba(59,130,246,0.7)]">
+            {/* Optional dark overlay for readability */}
+            <div className="absolute inset-0 bg-black/50" />
+            {/* Card content */}
+            <div className=" absolute bottom-0 left-0 z-10 text-white bg-black/50 w-full ">
+              <div className="px-3 pb-3">
+                <h3 className="font-semibold text-xl">My Skills</h3>
+                <p className="text-sm text-white/80">
+                  This guy can work with these technologies.
+                </p>
+              </div>
+            </div>
           </div>
-
           {/* Latest Video */}
-          <div className="bg-white/20 backdrop-blur-md rounded-lg p-4 border border-blue-500 
-            hover:scale-105 transition-transform cursor-pointer">
-            <img
-              src="/path-to-project3.jpg"
-              alt="Project 3"
-              className="w-full h-32 sm:h-40 object-cover rounded-md mb-2"
-            />
-            <h3 className="text-white font-semibold">Latest Works</h3>
-            <p className="text-sm text-white/80">Projects I am currently working on</p>
+          <div className="relative rounded-lg p-4 hover:scale-105 transition-transform duration-400 cursor-pointer overflow-hidden
+                bg-[url('/latest.png')] bg-cover bg-center h-64 sm:h-72  hover:shadow-[0_0_20px_rgba(59,130,246,0.7)]">
+            {/* Optional dark overlay for readability */}
+            <div className="absolute inset-0 bg-black/50" />
+            {/* Card content */}
+            <div className=" absolute bottom-0 left-0 z-10 text-white bg-black/50 w-full ">
+              <div className="px-3 pb-3">
+                <h3 className="font-semibold text-xl">Latest Works</h3>
+                <p className="text-sm text-white/80">
+                  Projects I am currently working on
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
