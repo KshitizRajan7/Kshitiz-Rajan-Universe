@@ -1,5 +1,5 @@
 import Portfolio from "@/components/Portfolio"
-// import SpinningEarthScene from "@/components/SpinningEarthScene"
+import SpinningEarthScene from "@/components/SpinningEarthScene"
 
 export default function Home() {
   return (
