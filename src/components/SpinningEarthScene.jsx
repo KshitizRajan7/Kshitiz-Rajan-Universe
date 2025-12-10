@@ -65,7 +65,7 @@ const Sun = () => {
    const sunTexture = new THREE.TextureLoader().load('https://upload.wikimedia.org/wikipedia/commons/c/cb/Solarsystemscope_texture_2k_sun.jpg');
   return (
     <mesh position={[200, 0, 200]}>
-      <sphereGeometry args={[100, 100, 100]} />
+      <sphereGeometry args={[80, 100, 100]} />
       <meshBasicMaterial map={sunTexture} />
     </mesh>
   );
