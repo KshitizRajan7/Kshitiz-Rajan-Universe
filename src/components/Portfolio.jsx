@@ -8,10 +8,10 @@ const Portfolio = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="relative w-screen h-screen flex flex-col justify-between">
+    <div className="relative w-screen h-fit flex flex-col justify-between">
       {/* Render menu only if open */}
       {open && (
-        <div className="flex-1 mx-5 mt-10 mb-24 border border-blue-500/50 rounded-xl justify-center
+        <div className="flex-1 mx-5 mb-24 border border-blue-500/50 rounded-xl justify-center
           bg-white/10 backdrop-blur-sm text-white p-4 flex flex-col items-center gap-4 overflow-y-auto">
 
           {/* Top Section */}
