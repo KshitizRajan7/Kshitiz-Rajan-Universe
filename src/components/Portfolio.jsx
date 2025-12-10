@@ -13,7 +13,7 @@ const Portfolio = () => {
   style={{ height: 'calc(100dvh - 5rem)' }} >
       {/* Render menu only if open */}
       {open && (
-        <div className="flex-1 mx-5 mt-12 mb-2 border border-blue-500/50 rounded-xl justify-center
+        <div className="flex-1 mx-5 mt-2 mb-2 border border-blue-500/50 rounded-xl justify-center
           bg-white/10 backdrop-blur-sm text-white p-4 flex flex-col items-center gap-4 overflow-y-auto">
 
           {/* Top Section */}
