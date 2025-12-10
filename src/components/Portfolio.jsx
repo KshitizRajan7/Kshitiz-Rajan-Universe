@@ -8,7 +8,9 @@ const Portfolio = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="relative w-screen h-fit flex flex-col justify-between">
+   <div
+  className="relative w-screen flex flex-col justify-between"
+  style={{ height: 'calc(100dvh - 5rem)' }} >
       {/* Render menu only if open */}
       {open && (
         <div className="flex-1 mx-5 mt-12 mb-2 border border-blue-500/50 rounded-xl justify-center
@@ -50,7 +52,7 @@ const Portfolio = () => {
             </div>
           </div>
 
-        
+
           {/* Projects / Cards Section */}
           <div className="relative w-full">
 
